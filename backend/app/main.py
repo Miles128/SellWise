@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
-from app.routers import product_research, analytics, influencer_analytics
+from app.routers import product_research, analytics, influencer_analytics, file_upload
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -34,6 +34,12 @@ app.include_router(
     influencer_analytics.router,
     prefix="/api/influencer-analytics",
     tags=["小红书达人数据分析"]
+)
+
+app.include_router(
+    file_upload.router,
+    prefix="/api/file-upload",
+    tags=["文件上传与数据导入"]
 )
 
 @app.get("/")
