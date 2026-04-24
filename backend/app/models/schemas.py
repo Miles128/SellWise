@@ -1,6 +1,6 @@
+from datetime import datetime as dt_datetime, date as dt_date
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any
-from datetime import datetime, date
 from app.models.enums import Platform, ProductStatus
 
 class ProductBase(BaseModel):
@@ -21,8 +21,8 @@ class ProductUpdate(BaseModel):
 
 class ProductResponse(ProductBase):
     id: int = Field(..., description="产品ID")
-    created_at: datetime = Field(..., description="创建时间")
-    updated_at: datetime = Field(..., description="更新时间")
+    created_at: dt_datetime = Field(..., description="创建时间")
+    updated_at: dt_datetime = Field(..., description="更新时间")
 
     class Config:
         from_attributes = True
@@ -65,7 +65,7 @@ class ProductResearchResponse(BaseModel):
     hot_keywords: List[str] = Field(..., description="热门关键词")
 
 class DailySalesData(BaseModel):
-    date: date = Field(..., description="日期")
+    sale_date: dt_date = Field(..., description="日期")
     sales_amount: float = Field(..., description="销售额")
     order_count: int = Field(..., description="订单数")
     avg_order_value: float = Field(..., description="客单价")

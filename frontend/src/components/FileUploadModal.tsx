@@ -12,6 +12,7 @@ import {
   Download
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { refreshAndNotify } from '@/lib/data';
 
 interface UploadedData {
   success: boolean;
@@ -129,6 +130,9 @@ export default function FileUploadModal({
 
       const data: UploadedData = await response.json();
       setUploadResult(data);
+      
+      await refreshAndNotify(uploadType);
+      
       onUploadComplete?.(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : '上传失败，请重试');
@@ -240,7 +244,7 @@ export default function FileUploadModal({
                   <button 
                     className="text-sm text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1"
                     onClick={() => {
-                      alert('请从项目目录 data-template 文件夹中获取模板文件:\n- 电商数据模板.csv\n- 电商数据模板.xlsx\n- 小红书达人数据模板.csv\n- 小红书达人数据模板.xlsx');
+                      alert('请从项目目录 data-template 文件夹中获取模板文件:\n- 电商数据模板.csv\n- 电商数据模板.xlsx\n- 小红书达人数据模板.csv\n- 小红书达人数据模板.xlsx\n\n测试数据文件:\n- test_products.csv/xlsx\n- test_influencers.csv/xlsx');
                     }}
                   >
                     <Download className="w-4 h-4" />
@@ -295,6 +299,9 @@ export default function FileUploadModal({
                   <p className="font-medium text-green-800">上传成功！</p>
                   <p className="text-sm text-green-600 mt-1">
                     成功读取 {uploadResult.row_count} 条数据，共 {uploadResult.column_count} 列
+                  </p>
+                  <p className="text-sm text-green-600 mt-1">
+                    页面数据已自动刷新
                   </p>
                 </div>
               </div>

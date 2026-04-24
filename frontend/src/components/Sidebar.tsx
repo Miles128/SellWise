@@ -14,18 +14,13 @@ import { cn } from '@/lib/utils';
 const navItems = [
   {
     path: '/',
-    label: '工作台',
-    icon: LayoutDashboard,
+    label: '商品运营数据分析',
+    icon: BarChart3,
   },
   {
     path: '/product-research',
     label: '电商选题',
     icon: Search,
-  },
-  {
-    path: '/analytics',
-    label: '运营数据分析',
-    icon: BarChart3,
   },
   {
     path: '/influencer-analytics',
