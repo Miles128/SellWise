@@ -1,20 +1,12 @@
 from enum import Enum
 
-class DataType(str, Enum):
-    HOT_PRODUCTS = "hot_products"
-    PRODUCT_MONITOR = "product_monitor"
-    INFLUENCER = "influencer"
-
 class Platform(str, Enum):
-    TAOBAO = "taobao"
-    JD = "jd"
-    PDD = "pdd"
-    DOUYIN = "douyin"
-    XIAOHONGSHU = "xiaohongshu"
-    OTHER = "other"
+    AMAZON = "amazon"
+    EBAY = "ebay"
+    SHOPIFY = "shopify"
+    WALMART = "walmart"
 
-class ScoreLevel(str, Enum):
-    EXCELLENT = "优秀"
-    GOOD = "良好"
-    AVERAGE = "一般"
-    NEEDS_IMPROVEMENT = "待提升"
+class ProductStatus(str, Enum):
+    ACTIVE = "active"
+    INACTIVE = "inactive"
+    OUT_OF_STOCK = "out_of_stock"
